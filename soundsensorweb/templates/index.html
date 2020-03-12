@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>树莓派传感器输入显示</title>
+</head>
+<body>
+
+<h2>当前数值：<span id="g_data"></span></h2>
+
+
+    <script src="/static/js/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        // 前端每？s向后台发起ajax请求，获取当前传感器数值
+        setInterval(function() {
+            $.get('/read',function(data){
+                $("#g_data").html(data)
+            })
+        },500)
+    </script>
+
+</body>
+</html>
